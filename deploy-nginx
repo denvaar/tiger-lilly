@@ -1,0 +1,12 @@
+. ~/environment-variables
+
+mix deps.get --only prod
+
+yarn install
+yarn run deploy
+MIX_ENV=prod mix phx.digest
+
+MIX_ENV=prod mix ecto.create
+MIX_ENV=prod mix ecto.migrate
+
+PORT=${PHOENIX_PORT} MIX_ENV=prod elixir --detached -S mix phx.server
