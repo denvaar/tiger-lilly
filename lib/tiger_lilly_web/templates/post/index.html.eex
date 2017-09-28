@@ -1,3 +1,14 @@
+<section class="hero-wiggle">
+  <section style="background:#5d70da;" class="ml-4 post-container p-1">
+  </section>
+</section>
+
+
+
+
+
+
+
 <h2>Listing Posts</h2>
 
 <table class="table">

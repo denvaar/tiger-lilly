@@ -1,12 +1,16 @@
 const path = require("path");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 
 module.exports = (env) => {
   return {
     devtool: "eval",
     entry: {
-      app: "./js/app.js"
+      app: [
+        "./js/app.js",
+        "./styles/app.scss",
+        "./styles/a.scss"
+      ]
     },
     output: {
       path: path.resolve(__dirname, "../priv/static"),
@@ -17,11 +21,21 @@ module.exports = (env) => {
       modules: ["node_modules", __dirname],
       extensions: [".js", ".json"]
     },
+    module: {
+      rules: [
+        {
+          test: /\.(scss|sass|css)$/,
+          use: ExtractTextPlugin.extract({
+            fallback: "style-loader",
+            use: ["css-loader", "sass-loader"]
+          })
+        }
+      ]
+    },
     plugins: [
-      new CopyWebpackPlugin([{
-        from: "./css",
-        to: path.resolve(__dirname, "../priv/static/css"),
-      }])
+      new ExtractTextPlugin({
+        filename: "css/[name].css"
+      })
     ]
   };
 };
