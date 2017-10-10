@@ -22,7 +22,7 @@ defmodule TigerLillyWeb.PostControllerTest do
   describe "new post" do
     test "renders form", %{conn: conn} do
       conn = get conn, post_path(conn, :new)
-      assert html_response(conn, 200) =~ "New Post"
+      assert html_response(conn, 200) =~ "New Article"
     end
   end
 
@@ -33,13 +33,11 @@ defmodule TigerLillyWeb.PostControllerTest do
       assert %{id: id} = redirected_params(conn)
       assert redirected_to(conn) == post_path(conn, :show, id)
 
-      conn = get conn, post_path(conn, :show, id)
-      assert html_response(conn, 200) =~ "Show Post"
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
       conn = post conn, post_path(conn, :create), post: @invalid_attrs
-      assert html_response(conn, 200) =~ "New Post"
+      assert html_response(conn, 200) =~ "New Article"
     end
   end
 

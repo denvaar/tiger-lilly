@@ -1,0 +1,37 @@
+.post-form {
+  input, button {
+    font-size: 18px;
+    font-family: "Avenir Next", sans-serif;
+    padding: 5px 15px;
+    border: none;
+    &[type="submit"] {
+      background: #68bd6b;
+      color: #fff;
+    }
+  }
+  textarea,
+  input {
+    font-family: "Avenir Next", sans-serif;
+    border: none;
+    border-left: 3px solid #ddd;
+    padding: 0.75rem;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 90%;
+    transition: 0.5s;
+  }
+  textarea {
+    min-height: 200px;
+  }
+  textarea:focus,
+  input:focus {
+    outline: none;
+    border-left: 3px solid #2ef036;
+    background: #fbfbfb;
+  }
+  .title-input {
+    font-weight: bold;
+    font-size: 2rem;
+  }
+}

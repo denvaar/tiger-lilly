@@ -9,7 +9,7 @@ module.exports = (env) => {
       app: [
         "./js/app.js",
         "./styles/app.scss",
-        "./styles/a.scss"
+        "./styles/forms.scss"
       ]
     },
     output: {
