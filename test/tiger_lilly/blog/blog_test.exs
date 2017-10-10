@@ -69,10 +69,5 @@ defmodule TigerLilly.BlogTest do
       post = post_fixture()
       assert %Ecto.Changeset{} = Blog.change_post(post)
     end
-
-    test "can slugify its own title" do
-      title = "Test title"
-      assert Post.slugified_title(title) == "test-title"
-    end
   end
 end
