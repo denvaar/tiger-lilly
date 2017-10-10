@@ -4,6 +4,7 @@ defmodule TigerLilly.Blog.Post do
   alias TigerLilly.Blog.Post
 
 
+  @derive {Phoenix.Param, key: :slug}
   schema "posts" do
     field :body, :string
     field :date_published, :utc_datetime
@@ -12,27 +13,25 @@ defmodule TigerLilly.Blog.Post do
     field :title, :string
     field :hero_pattern_style, :string
     field :background_color_class, :string
+    field :slug, :string
 
     timestamps()
   end
 
   @doc false
   def changeset(%Post{} = post, attrs) do
+    attrs = Map.merge(attrs, slug_map(attrs))
+
     post
-    |> cast(attrs, [:body, :title, :summary, :published, :date_published])
+    |> cast(attrs, [:slug, :body, :title, :summary, :published, :date_published])
     |> validate_required([:body, :title, :summary, :published, :date_published])
   end
 
-  # def slugified_title(title) do
-  #   title
-  #    |> String.downcase
-  #    |> String.replace(~r/[^a-z0-9\s-]/, "")
-  #    |> String.replace(~r/(\s|-)+/, "-")
-  #end
+  defp slug_map(%{"title" => title}) do
+    slug = String.downcase(title) |> String.replace(" ", "-")
+    %{"slug" => slug}
+  end
+  defp slug_map(_params) do
+    %{}
+  end
 end
-
-# defimpl Phoenix.Param, for Blog.Post do
-#   def to_param(%{slug: slug, title: title}) do
-#     "#{slug}-#{Blog.Post.slugified_title(title)}"
-#   end
-# end
