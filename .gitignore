@@ -1,6 +1,7 @@
 # Editor artifacts
 *.swp
 
+
 # App artifacts
 /_build
 /db
@@ -18,3 +19,5 @@ erl_crash.dump
 # variables.
 /config/*.secret.exs
 /assets/node_modules
+/assets/yarn.lock
+/priv/static/*

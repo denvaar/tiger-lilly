@@ -14,7 +14,7 @@
     <%= error_tag f, :summary %>
   </div>
   <div class="">
-    <%= text_input f, :date_published, class: "", placeholder: "Date of publication..." %>
+    <%= text_input f, :date_published, class: "", id: "postDate", placeholder: "Date of publication..." %>
     <%= error_tag f, :date_published %>
   </div>
   <div class="">
@@ -42,3 +42,5 @@
     <%= submit "Submit", class: "" %>
   </div>
 <% end %>
+
+<script src="<%= static_path(@conn, "/js/edit_post.js") %>"></script>
