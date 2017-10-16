@@ -27,15 +27,29 @@
               <i class="fa fa-question fa-2x" aria-hidden="true"></i>
             </li>
           <% end %>
-          <%= if assigns[:post] do %> <% # if is logged in and author %>
-            <%= link to: post_path(@conn, :edit, @post), class: "nav-link" do %>
+          <%= if @current_user do %>
+            <%= link to: post_path(@conn, :new), class: "nav-link" do %>
               <li>
-                <i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
+                <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+              </li>
+            <% end %>
+            <%= if assigns[:post] do %>
+              <%= link to: post_path(@conn, :edit, @post), class: "nav-link" do %>
+                <li>
+                  <i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
+                </li>
+              <% end %>
+            <% end %>
+            <%= link to: session_path(@conn, :delete, @current_user.id), method: :delete, class: "nav-link" do %>
+              <li>
+                <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
               </li>
             <% end %>
           <% end %>
         </ul>
       </nav>
+      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
       <%= render @view_module, @view_template, assigns %>
       </main>
 
