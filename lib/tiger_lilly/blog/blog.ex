@@ -7,6 +7,8 @@ defmodule TigerLilly.Blog do
   alias TigerLilly.Repo
 
   alias TigerLilly.Blog.Post
+  alias TigerLilly.Blog.User
+  alias TigerLilly.Auth
 
   @doc """
   Returns the list of posts.
@@ -105,5 +107,23 @@ defmodule TigerLilly.Blog do
   """
   def change_post(%Post{} = post) do
     Post.changeset(post, %{})
+  end
+
+  def create_user(attrs \\ %{}) do
+    {password, attrs} = Map.pop(attrs, :password)
+
+    %User{}
+    |> User.changeset(Map.put_new(attrs, :password_hash, Auth.make_hash(password)))
+    |> Repo.insert()
+  end
+
+  def get_user!(id), do: Repo.get!(User, id)
+
+  def change_user(%User{} = user) do
+    User.changeset(user, %{})
+  end
+
+  def get_user_by_email(email) do
+    Repo.get_by(User, email: String.downcase(email))
   end
 end
