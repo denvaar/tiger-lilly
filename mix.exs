@@ -20,7 +20,7 @@ defmodule TigerLilly.Mixfile do
   def application do
     [
       mod: {TigerLilly.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :timex]
     ]
   end
 
@@ -40,6 +40,7 @@ defmodule TigerLilly.Mixfile do
       {:phoenix_html, "~> 2.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
+      {:timex, "~> 3.1"},
       {:guardian, "~> 1.0-beta"},
       {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 1.0"},
