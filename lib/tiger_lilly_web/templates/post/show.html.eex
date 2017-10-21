@@ -3,7 +3,7 @@
     <header class="mr-1 mb-2 post-detail-header">
       <h1><%= @post.title %></h1>
       <p><%= @post.summary %></p>
-      <p><%= @post.date_published %></p>
+      <p><%= format_date(@post.date_published) %></p>
     </header>
   </div>
   <%= @post.body %>

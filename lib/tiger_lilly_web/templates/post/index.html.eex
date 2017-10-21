@@ -7,7 +7,7 @@
           <p><%= post.summary %></p>
         </header>
         <div class="flex-container post-footer-content">
-          <div class="flex-item"><%= post.date_published %></div>
+          <div class="flex-item"><%= format_date(post.date_published) %></div>
           <div class="flex-item text-right">
             <a href="<%= post_path(@conn, :show, post) %>" class="read-link">Read <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
           </div>
