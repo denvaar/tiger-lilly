@@ -39,6 +39,12 @@
   </div>
 
   <div class="">
+    <%= label f, :tags, class: "control-label" %>
+    <%= multiple_select f, :tags, @available_tags, selected: @selected_tags %>
+    <%= error_tag f, :tags %>
+  </div>
+
+  <div class="">
     <%= submit "Submit", class: "" %>
   </div>
 <% end %>

@@ -4,6 +4,10 @@ defmodule TigerLillyWeb.PostController do
   alias TigerLilly.Blog
   alias TigerLilly.Blog.Post
 
+  import TigerLilly.PostTagUtils
+
+  plug :assign_available_tags, Blog.list_tags() when action in [:new, :create, :edit, :update]
+
   def index(conn, _params) do
     posts = Blog.list_posts()
     render(conn, "index.html", posts: posts)
@@ -21,7 +25,7 @@ defmodule TigerLillyWeb.PostController do
         |> put_flash(:info, "Post created successfully.")
         |> redirect(to: post_path(conn, :show, post))
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        render(conn, "new.html", selected_tags: changeset.post.tags, changeset: changeset)
     end
   end
 
@@ -33,7 +37,8 @@ defmodule TigerLillyWeb.PostController do
   def edit(conn, %{"id" => id}) do
     post = Blog.get_post_by_slug!(id)
     changeset = Blog.change_post(post)
-    render(conn, "edit.html", post: post, changeset: changeset)
+    selected_tags = Enum.map(post.tags, &(&1.id))
+    render(conn, "edit.html", selected_tags: selected_tags, post: post, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "post" => post_params}) do
@@ -45,7 +50,7 @@ defmodule TigerLillyWeb.PostController do
         |> put_flash(:info, "Post updated successfully.")
         |> redirect(to: post_path(conn, :show, post))
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "edit.html", post: post, changeset: changeset)
+        render(conn, "edit.html", selected_tags: post.tags, post: post, changeset: changeset)
     end
   end
 

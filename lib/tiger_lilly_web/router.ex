@@ -18,6 +18,7 @@ defmodule TigerLillyWeb.Router do
     pipe_through [:browser, :browser_auth]
 
     resources "/", PostController, except: [:show, :index]
+    resources "/tags", TagController
   end
 
   scope "/", TigerLillyWeb do

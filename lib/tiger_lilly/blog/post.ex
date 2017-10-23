@@ -2,6 +2,7 @@ defmodule TigerLilly.Blog.Post do
   use Ecto.Schema
   import Ecto.Changeset
   alias TigerLilly.Blog.Post
+  alias TigerLilly.Blog.Tag
 
 
   @derive {Phoenix.Param, key: :slug}
@@ -14,6 +15,8 @@ defmodule TigerLilly.Blog.Post do
     field :hero_pattern_style, :string
     field :background_color_class, :string
     field :slug, :string
+
+    many_to_many :tags, Tag, join_through: "posts_tags", on_replace: :delete
 
     timestamps()
   end
