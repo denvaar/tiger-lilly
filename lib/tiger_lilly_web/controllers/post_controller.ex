@@ -1,16 +1,19 @@
 defmodule TigerLillyWeb.PostController do
   use TigerLillyWeb, :controller
 
+  import TigerLilly.PostTagUtils
+
+  alias TigerLilly.Repo
   alias TigerLilly.Blog
   alias TigerLilly.Blog.Post
 
-  import TigerLilly.PostTagUtils
+  plug :assign_available_tags when action in [:new, :create, :edit, :update]
 
-  plug :assign_available_tags, Blog.list_tags() when action in [:new, :create, :edit, :update]
-
-  def index(conn, _params) do
-    posts = Blog.list_posts()
-    render(conn, "index.html", posts: posts)
+  def index(conn, params) do
+    page =
+      Blog.list_posts_as_query()
+      |> Repo.paginate(params)
+    render(conn, "index.html", posts: page.entries, page: page)
   end
 
   def new(conn, _params) do
