@@ -24,7 +24,10 @@ config :logger, :console,
 
 config :tiger_lilly, TigerLilly.Guardian,
   issuer: "tiger_lilly",
-  secret_key: System.get_env("GUARDIAN_SECRET")
+  secret_key: System.get_env("GUARDIAN_SECRET") || "1jkmosBwibIebkQH/6C+M8FUHPoSAtFNNh9XZtTefwtXS3hiNtu6PxD9wUjTF9Nr"
+
+config :tiger_lilly,
+  routes_helper: TigerLilly.Router.Helpers
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

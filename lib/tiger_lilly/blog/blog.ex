@@ -24,6 +24,10 @@ defmodule TigerLilly.Blog do
     Repo.all(Post)
   end
 
+  def list_posts_as_query do
+    from([post] in Post)
+  end
+
   @doc """
   Gets a single post.
 

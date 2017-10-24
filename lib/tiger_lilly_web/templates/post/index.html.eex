@@ -16,3 +16,5 @@
     </section>
   <% end %>
 </section>
+
+<%= pagination_links @page %>

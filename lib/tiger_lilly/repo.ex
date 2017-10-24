@@ -1,5 +1,6 @@
 defmodule TigerLilly.Repo do
   use Ecto.Repo, otp_app: :tiger_lilly
+  use Scrivener, page_size: 5
 
   @doc """
   Dynamically loads the repository url from the
