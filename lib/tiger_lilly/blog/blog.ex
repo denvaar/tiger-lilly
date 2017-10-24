@@ -25,8 +25,10 @@ defmodule TigerLilly.Blog do
   end
 
   def list_posts_as_query do
-    from([post] in Post)
+    from(post in Post)
   end
+
+  def order_by_published_date(query), do: from record in query, order_by: [desc: :date_published]
 
   @doc """
   Gets a single post.
