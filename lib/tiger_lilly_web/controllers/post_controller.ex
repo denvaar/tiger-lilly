@@ -19,7 +19,7 @@ defmodule TigerLillyWeb.PostController do
 
   def new(conn, _params) do
     changeset = Blog.change_post(%Post{})
-    render(conn, "new.html", changeset: changeset)
+    render(conn, "new.html", selected_tags: [], changeset: changeset)
   end
 
   def create(conn, %{"post" => post_params}) do

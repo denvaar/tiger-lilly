@@ -1,5 +1,6 @@
 import flatpickr from 'flatpickr';
 
+
 flatpickr("#postDate", {
   enableTime: true,
   defaultDate: new Date,
