@@ -41,6 +41,7 @@ defmodule TigerLilly.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:timex, "~> 3.1"},
+      {:earmark, "> 1.2.2"},
       {:scrivener_ecto, "~> 1.0"},
       {:scrivener_html, "~> 1.7"},
       {:guardian, "~> 1.0-beta"},
