@@ -6,7 +6,7 @@
       <p><%= format_date(@post.date_published) %></p>
     </header>
   </div>
-  <%= @post.body %>
+  <%= as_html(@post.body) %>
   <h3>"All of the forces of nature and technology are against you when creating an app"</h3>
   <%= @post.body %>
 </article>
