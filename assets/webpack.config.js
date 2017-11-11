@@ -1,5 +1,6 @@
 const path = require("path");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 
 module.exports = (env) => {
@@ -8,8 +9,12 @@ module.exports = (env) => {
     entry: {
       app: [
         "./js/app.js",
-        "./styles/app.scss",
+        "./styles/main.scss",
+        "./styles/posts.scss",
         "./styles/forms.scss"
+      ],
+      posts: [
+        "./styles/posts.scss"
       ],
       edit_post: [
         "./js/flatpickr.js",
@@ -53,6 +58,19 @@ module.exports = (env) => {
     plugins: [
       new ExtractTextPlugin({
         filename: "css/[name].css"
+      }),
+      new CopyWebpackPlugin([
+        {
+          from: "./js/highlight.pack.js",
+          to: path.resolve(__dirname, "../priv/static/js")
+        },
+        {
+          from: "./styles/ocean.css",
+          to: path.resolve(__dirname, "../priv/static/css")
+        }
+      ],
+      {
+        copyUnmodified: true
       })
     ]
   };

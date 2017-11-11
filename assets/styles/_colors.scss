@@ -1,0 +1,19 @@
+$black: #333;
+$grey:  #9c9c9c;
+$white: #fff;
+$blue:  #6e7cce;
+$red:   #d3554c;
+$green: #28ad7e;
+
+.black { background: $black; }
+.white { background: $white; }
+.red   { background: $red; }
+.blue  { background: $blue; }
+.green { background: $green; }
+
+.fg-black { color: $black; }
+.fg-grey  { color: $grey; }
+.fg-white { color: $white; }
+.fg-red   { color: $red; }
+.fg-blue  { color: $blue; }
+.fg-green { color: $green; }

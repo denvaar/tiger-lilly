@@ -1,20 +1,29 @@
-<section class="post-list">
+<div class="list">
+  <div class="post-form grid-center">
+    <input type="text" placeholder="Search by title, content, etc." />
+  </div>
   <%= for post <- @posts do %>
-    <section class="post-outer-container <%= post.hero_pattern_style %> <%= post.background_color_class %>">
-      <section class="post-container p-1 <%= post.background_color_class %>">
-        <header class="post-content">
-          <h1 class="post-title"><%= post.title %></h1>
-          <p><%= post.summary %></p>
-        </header>
-        <div class="flex-container post-footer-content">
-          <div class="flex-item"><%= format_date(post.date_published) %></div>
-          <div class="flex-item text-right">
-            <a href="<%= post_path(@conn, :show, post) %>" class="read-link">Read <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-          </div>
-        </div>
-      </section>
-    </section>
+    <div class="grid-row mobile-text-center">
+      <div class="grid-item-1 ml-1 mr-1 mobile-order-2 fg-grey text-middle">
+        <span class="mobile-p"><%= format_date(post.date_published) %></span>
+      </div>
+      <div class="grid-item-3">
+        <h2 class="mobile-h2">
+          <a href="<%= post_path(@conn, :show, post) %>" class="link">
+            <%= post.title %>
+          </a>
+        </h2>
+      </div>
+      <div class="grid-item-1"></div>
+    </div>
+    <div class="grid-row">
+      <div class="grid-item-1 ml-1 mr-1"></div>
+      <div class="grid-item-3">
+        <p class="mobile-hidden"><%= post.summary %></p>
+      </div>
+      <div class="grid-item-1"></div>
+    </div>
   <% end %>
-</section>
+</div>
 
-<%= pagination_links @page %>
+<%= pagination_links @page, next: ">", previous: "<" %>

@@ -6,6 +6,7 @@ defmodule TigerLillyWeb.PostView do
     Timex.format!(date, "{0M}.{0D}.{YYYY}")
   end
 
+  def as_html(nil), do: nil
   def as_html(text) do
     Earmark.as_html!(text)
     |> Phoenix.HTML.raw

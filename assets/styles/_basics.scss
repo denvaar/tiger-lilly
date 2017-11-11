@@ -1,0 +1,45 @@
+html {
+  font-family: "Avenir Next", sans-serif;
+  color: #333;
+}
+
+body {
+  margin: 0;
+}
+
+main { min-height: calc(100vh - 80px); }
+
+code {
+  font-family: 'Ubuntu Mono', monospace;
+  background: aliceblue;
+  padding: 2px 0.5rem;
+}
+
+pre {
+  & code {
+    font-family: 'Ubuntu Mono', monospace;
+    border-radius: 2px;
+    padding: 1rem;
+  }
+  font-size: 1rem;
+}
+
+.mobile-h2 { font-size: 1.3em; }
+.mobile-p { font-size: 0.8em; }
+
+.mobile-text-center {
+  text-align: center;
+}
+
+.text-center { text-align: center; }
+.text-middle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media all and (min-width: $mobile-device-upper-limit) {
+  .mobile-text-center { text-align: unset; }
+  .mobile-h2 { font-size: 1.5em; }
+  .mobile-p { font-size: 1em; }
+}
