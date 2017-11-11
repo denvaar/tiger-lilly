@@ -3,10 +3,11 @@
     <header class="mr-1 mb-2 post-detail-header">
       <h1><%= @post.title %></h1>
       <p><%= @post.summary %></p>
-      <p><%= format_date(@post.date_published) %></p>
+      <p class="fg-grey">
+        <i class="fa fa-calendar-o fg-black" aria-hidden="true"></i>
+        <%= format_date(@post.date_published) %>
+      </p>
     </header>
   </div>
   <%= as_html(@post.body) %>
-  <h3>"All of the forces of nature and technology are against you when creating an app"</h3>
-  <%= @post.body %>
 </article>

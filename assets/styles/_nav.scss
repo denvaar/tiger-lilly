@@ -1,0 +1,35 @@
+.navbar {
+  line-height: 61px;
+  text-align: center;
+  margin-left: 0;
+
+  ul {
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: inline-block;
+      height: 50px;
+    }
+  }
+
+  .nav-link {
+    color: $blue;
+    text-decoration: none;
+    &:after {
+      color: $black;
+      content: " | ";
+      white-space: pre;
+    }
+    &:last-child:after {
+      content: none;
+    }
+  }
+}
+
+@media all and (min-width: $mobile-device-upper-limit) {
+  .navbar {
+    display: inline-block;
+    margin-left: 1rem;
+  }
+}
