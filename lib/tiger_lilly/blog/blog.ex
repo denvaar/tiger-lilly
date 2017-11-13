@@ -28,6 +28,20 @@ defmodule TigerLilly.Blog do
     from(post in Post)
   end
 
+  def filter_by(query, nil), do: query
+  def filter_by(query, ""), do: query
+  def filter_by(query, search_term) do
+    query
+    |> where([q], ilike(q.title, ^("%#{sanitize_like(search_term)}%")))
+  end
+
+  defp sanitize_like(term) do
+    term
+    |> String.replace("%", "\\%")
+    |> String.replace("_", "\\_")
+    |> String.replace("\\", "\\\\")
+  end
+
   def order_by_published_date(query), do: from record in query, order_by: [desc: :date_published]
 
   @doc """
