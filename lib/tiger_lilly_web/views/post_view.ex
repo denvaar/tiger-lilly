@@ -11,4 +11,11 @@ defmodule TigerLillyWeb.PostView do
     Earmark.as_html!(text)
     |> Phoenix.HTML.raw
   end
+
+  def extra_query_params(params) do
+    params
+    |> Enum.map(fn {key, value} -> {String.to_atom(key), value} end)
+    |> Enum.reject(fn {key, _} -> key == :page end)
+    |> Enum.reject(fn {_, value} -> value == "" end)
+  end
 end

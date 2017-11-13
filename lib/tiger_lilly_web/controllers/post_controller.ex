@@ -12,6 +12,7 @@ defmodule TigerLillyWeb.PostController do
   def index(conn, params) do
     page =
       Blog.list_posts_as_query()
+      |> Blog.filter_by(params["q"])
       |> Blog.order_by_published_date()
       |> Repo.paginate(params)
     render(conn, "index.html", posts: page.entries, page: page)
