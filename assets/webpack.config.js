@@ -11,13 +11,13 @@ module.exports = (env) => {
         "./js/app.js",
         "./styles/main.scss",
         "./styles/posts.scss",
-        "./styles/forms.scss"
       ],
       posts: [
         "./styles/posts.scss"
       ],
       edit_post: [
         "./js/flatpickr.js",
+        "./js/tag.js",
         "./node_modules/flatpickr/dist/flatpickr.min.css",
         "./node_modules/flatpickr/dist/themes/dark.css"
       ]

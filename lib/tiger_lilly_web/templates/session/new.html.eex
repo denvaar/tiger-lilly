@@ -1,13 +1,19 @@
-<%= form_for @changeset, session_path(@conn, :create), [class: "post-form"], fn f -> %>
-  <div class="">
-    <%= text_input f, :email, class: "", placeholder: "Email" %>
-    <%= error_tag f, :email %>
+<div class="form-container p-1">
+  <div class="middle">
+    <div class="w-400">
+      <%= form_for @changeset, session_path(@conn, :create), [class: "form"], fn f -> %>
+        <div class="">
+          <%= text_input f, :email, class: "", placeholder: "Email" %>
+          <%= error_tag f, :email %>
+        </div>
+        <div class="">
+          <%= password_input f, :password, class: "", placeholder: "Password" %>
+          <%= error_tag f, :password %>
+        </div>
+        <div class="">
+          <%= submit "Submit", class: "" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div class="">
-    <%= password_input f, :password, class: "", placeholder: "Password" %>
-    <%= error_tag f, :password %>
-  </div>
-  <div class="">
-    <%= submit "Submit", class: "" %>
-  </div>
-<% end %>
+</div>

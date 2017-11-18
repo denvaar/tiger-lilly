@@ -1,0 +1,137 @@
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #9c9c9c;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #9c9c9c;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #9c9c9c;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #9c9c9c;
+}
+
+.tag {
+  display: none;
+}
+.tag-container {
+  .tag-selected-container {
+    padding-left: 12px;
+    position: absolute;
+    .tag-item {
+      position: relative;
+      top: 25px;
+      color: $white;
+      background: $blue;
+      padding: 5px;
+      margin: 0 3px;
+      border-radius: 6px;
+    }
+  }
+  .tag-input {
+    flex-grow: 100;
+  }
+}
+
+.tgl {
+  display: none;
+  &,
+  &:after,
+  &:before,
+  & *,
+  & *:after,
+  & *:before,
+  & + .tgl-btn {
+    box-sizing: border-box;
+    &::selection {
+      background: none;
+    }
+  }
+  + .tgl-btn {
+    outline: 0;
+    display: block;
+    width: 4em;
+    height: 2em;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    &:after,
+    &:before {
+      position: relative;
+      display: block;
+      content: "";
+      width: 50%;
+      height: 100%;
+    }
+    &:after {
+      left: 0;
+    }
+
+    &:before {
+      display: none;
+    }
+  }
+
+  &:checked + .tgl-btn:after {
+    left: 50%;
+  }
+}
+
+.tgl-light {
+  +.tgl-btn {
+    background: $grey;
+    border-radius: 2em;
+    padding: 2px;
+    transition: all .4s ease;
+    &:after {
+      border-radius: 50%;
+      background: #fff;
+      transition: all .2s ease;
+    }
+  }
+  &:checked + .tgl-btn {
+    background: $blue;
+  }
+}
+
+.form {
+  input, button {
+    border-radius: 2px;
+    font-size: 18px;
+    font-family: "Avenir Next", sans-serif;
+    padding: 0.5rem 1rem;
+    border: none;
+    &[type="submit"] {
+      background: $green;
+      color: $white;
+    }
+  }
+  textarea,
+  input {
+    border-radius: 2px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid #eceaea;
+    padding: 0.75rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    transition: background 0.3s;
+    background: #eceaea;
+  }
+  textarea {
+    min-height: 200px;
+    font-family: "Ubuntu Mono", monospace;
+    font-size: 1rem;
+  }
+  textarea:focus,
+  input:focus {
+    outline: none;
+    border-bottom: 2px solid $blue;
+    background: #f6f9fb;
+  }
+  .title-input {
+    font-weight: bold;
+    font-size: 2rem;
+  }
+}
