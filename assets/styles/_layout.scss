@@ -35,6 +35,17 @@
     to   { opacity: 1; }
 }
 
+.form-container {
+  max-width: 800px;
+  .middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .w-400 {
+    width: 400px;
+  }
+}
 
 .footer {
   height: 80px;

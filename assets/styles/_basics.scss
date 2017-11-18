@@ -24,6 +24,18 @@ pre {
   font-size: 1rem;
 }
 
+.alert {
+  border-radius: 2px;
+}
+.alert-info {
+  background: #ddedde;
+  color: $green;
+}
+.alert-danger {
+  background: #ffd8d8;
+  color: $red;
+}
+
 .mobile-h2 { font-size: 1.3em; }
 .mobile-p { font-size: 0.8em; }
 

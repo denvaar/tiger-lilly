@@ -1,3 +1,4 @@
+require IEx
 defmodule TigerLillyWeb.PostController do
   use TigerLillyWeb, :controller
 
@@ -30,7 +31,7 @@ defmodule TigerLillyWeb.PostController do
         |> put_flash(:info, "Post created successfully.")
         |> redirect(to: post_path(conn, :show, post))
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", selected_tags: changeset.post.tags, changeset: changeset)
+        render(conn, "new.html", selected_tags: changeset.changes.tags, changeset: changeset)
     end
   end
 

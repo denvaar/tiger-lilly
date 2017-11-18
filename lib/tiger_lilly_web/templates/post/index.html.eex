@@ -1,6 +1,6 @@
 <div class="list">
   <%= form_for @conn, post_path(@conn, :index), [method: :get], fn f -> %>
-    <div class="post-form grid-center">
+    <div class="form grid-center">
       <%= text_input f, :q, placeholder: "Search by title, content, etc." %>
     </div>
   <% end %>
