@@ -1,0 +1,4 @@
+<div class="form-container p-1">
+  <h1>Edit Entry</h1>
+  <%= render "form.html", Map.put(assigns, :action, nugget_path(@conn, :update, @nugget)) %>
+</div>

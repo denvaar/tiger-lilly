@@ -3,12 +3,14 @@ defmodule TigerLilly.Blog.Tag do
   import Ecto.Changeset
   alias TigerLilly.Blog.Tag
   alias TigerLilly.Blog.Post
+  alias TigerLilly.TodayILearned.Nugget
 
 
   schema "tags" do
     field :name, :string
 
     many_to_many :posts, Post, join_through: "posts_tags"
+    many_to_many :nuggetes, Nugget, join_through: "nuggetes_tags"
 
     timestamps()
   end

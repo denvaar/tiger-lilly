@@ -26,8 +26,8 @@
             <%= link to: post_path(@conn, :index), class: "nav-link" do %>
               <li>Articles</li>
             <% end %>
-            <%= link to: post_path(@conn, :index), class: "nav-link" do %>
-              <li>TIL</li>
+            <%= link to: nugget_path(@conn, :index), class: "nav-link" do %>
+              <li>Today I Learned</li>
             <% end %>
             <%= if @current_user do %>
               <%= link to: post_path(@conn, :new), class: "nav-link" do %>

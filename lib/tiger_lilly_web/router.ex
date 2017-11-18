@@ -17,14 +17,17 @@ defmodule TigerLillyWeb.Router do
   scope "/", TigerLillyWeb do
     pipe_through [:browser, :browser_auth]
 
-    resources "/", PostController, except: [:show, :index]
+    resources "/articles", PostController, except: [:show, :index]
     resources "/tags", TagController
+    resources "/tils", NuggetController, except: [:show, :index]
   end
 
   scope "/", TigerLillyWeb do
     pipe_through [:browser]
 
-    resources "/", PostController, only: [:show, :index]
+    get "/", PostController, :index # TODO redirect_to instead
+    resources "/articles", PostController, only: [:show, :index]
     resources "/sessions", SessionController, only: [:new, :create, :delete]
+    resources "/tils", NuggetController, only: [:show, :index]
   end
 end

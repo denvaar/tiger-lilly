@@ -1,0 +1,28 @@
+<h2>Today I learned</h2>
+
+<ul>
+
+  <li>
+    <strong>Date:</strong>
+    <%= @nugget.date %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @nugget.description %>
+  </li>
+
+  <li>
+    <strong>Tags:</strong>
+    <ul>
+      <%= for tag <- @nugget.tags do %>
+        <li><%= tag.name %></li>
+      <% end %>
+    </ul>
+  </li>
+
+</ul>
+<%= if @current_user do %>
+  <span><%= link "Edit", to: nugget_path(@conn, :edit, @nugget) %></span>
+<% end %>
+<span><%= link "Back", to: nugget_path(@conn, :index) %></span>

@@ -1,0 +1,31 @@
+<h2>Today I Learned</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Description</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for nugget <- @nuggetes do %>
+    <tr>
+      <td><%= nugget.date %></td>
+      <td><%= nugget.description %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: nugget_path(@conn, :show, nugget), class: "btn btn-default btn-xs" %></span>
+        <%= if @current_user do %>
+          <span><%= link "Edit", to: nugget_path(@conn, :edit, nugget), class: "btn btn-default btn-xs" %></span>
+          <span><%= link "Delete", to: nugget_path(@conn, :delete, nugget), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+        <% end %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+<% if @current_user do %>
+  <span><%= link "New Nugget", to: nugget_path(@conn, :new) %></span>
+<% end %>
