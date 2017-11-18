@@ -1,0 +1,36 @@
+<%= form_for @changeset, @action, [class: "form"], fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger text-center p-1">
+      <span>Oops, something went wrong! Please check the errors below.</span>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label f, :date, class: "control-label" %>
+    <%= text_input f, :date, id: "postDate", class: "form-control" %>
+    <div class="fg-red">
+      <%= error_tag f, :date %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :description, class: "control-label" %>
+    <%= textarea f, :description, class: "form-control" %>
+    <div class="fg-red">
+      <%= error_tag f, :description %>
+    </div>
+  </div>
+
+  <div>
+    <%= label f, :tags %>
+    <%= multiple_select f, :tags, @available_tags, selected: @selected_tags, class: "tag" %>
+    <div class="fg-red">
+      <%= error_tag f, :tags %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>
+<script src="<%= static_path(@conn, "/js/edit_post.js") %>"></script>
