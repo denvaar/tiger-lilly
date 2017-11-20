@@ -95,10 +95,22 @@ defmodule TigerLilly.Blog do
     Ecto.Changeset.put_assoc(changeset, :tags, tags)
   end
 
-  defp tag_ids_from(attrs) do
+  defp get_or_create_tag({tag_name, :error}) do
+    case TigerLilly.Blog.create_tag(%{name: tag_name}) do
+      {:ok, tag} ->
+        tag.id
+      {:error, _} ->
+        tag = TigerLilly.Blog.get_tag_by_name(tag_name)
+        tag.id
+    end
+  end
+  defp get_or_create_tag({_, {id, _}}), do: id
+
+  def tag_ids_from(attrs) do
     attrs
     |> Map.get("tags", [])
-    |> Enum.map(fn id -> String.to_integer(id) end)
+    |> Enum.map(fn tag -> get_or_create_tag({tag, Integer.parse("#{tag}")}) end)
+    |> Enum.filter(fn tag -> tag end)
   end
 
   @doc """
@@ -168,7 +180,6 @@ defmodule TigerLilly.Blog do
     Repo.get_by(User, email: String.downcase(email))
   end
 
-
   @doc """
   Returns the list of tags.
 
@@ -197,6 +208,14 @@ defmodule TigerLilly.Blog do
 
   """
   def get_tag!(id), do: Repo.get!(Tag, id)
+
+  @doc """
+  Gets a tag by name
+  """
+  def get_tag_by_name(name) do
+    Tag
+    |> Repo.get_by(name: name)
+  end
 
   @doc """
   Creates a tag.
