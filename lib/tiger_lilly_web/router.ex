@@ -14,6 +14,18 @@ defmodule TigerLillyWeb.Router do
     plug TigerLilly.Guardian.BrowserAuthPipeline
   end
 
+  pipeline :api do
+    plug :accepts, ["json"]
+  end
+
+  scope "/api", TigerLillyWeb, as: :api do
+    pipe_through :api
+
+    scope "/v1", Api.V1, as: :v1 do
+      resources "/tils", NuggetController, only: [:create, :update]
+    end
+  end
+
   scope "/", TigerLillyWeb do
     pipe_through [:browser, :browser_auth]
 

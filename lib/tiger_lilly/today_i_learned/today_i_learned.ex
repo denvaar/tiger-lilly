@@ -42,14 +42,8 @@ defmodule TigerLilly.TodayILearned do
     |> Repo.preload(:tags)
   end
 
-  defp tag_ids_from(attrs) do
-    attrs
-    |> Map.get("tags", [])
-    |> Enum.map(fn id -> String.to_integer(id) end)
-  end
-
   defp put_tags_nugget(changeset, attrs) do
-    ids = tag_ids_from(attrs)
+    ids = TigerLilly.Blog.tag_ids_from(attrs)
     tags = Repo.all(from(t in Tag, where: t.id in ^ids))
     Ecto.Changeset.put_assoc(changeset, :tags, tags)
   end
