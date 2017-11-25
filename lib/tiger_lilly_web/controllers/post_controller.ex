@@ -1,4 +1,3 @@
-require IEx
 defmodule TigerLillyWeb.PostController do
   use TigerLillyWeb, :controller
 

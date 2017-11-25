@@ -22,7 +22,7 @@ defmodule TigerLillyWeb.Router do
     pipe_through :api
 
     scope "/v1", Api.V1, as: :v1 do
-      resources "/tils", NuggetController, only: [:create, :update]
+      resources "/tils", NuggetController, only: [:show, :create, :update]
     end
   end
 
