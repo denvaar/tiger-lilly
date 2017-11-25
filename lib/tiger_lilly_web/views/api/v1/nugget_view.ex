@@ -1,8 +1,9 @@
 defmodule TigerLillyWeb.Api.V1.NuggetView do
   use TigerLillyWeb, :view
 
-  def render("show.json", %{nugget: nugget}) do
-    %{data: render_one(nugget, TigerLillyWeb.Api.V1.NuggetView, "nugget.json")}
+  def render("show.json", %{nugget: nugget, conn: conn}) do
+    %{data: render_one(nugget, TigerLillyWeb.Api.V1.NuggetView, "nugget.json"),
+      resource_path: nugget_path(conn, :show, nugget.id)}
   end
 
   def render("nugget.json", %{nugget: nugget}) do

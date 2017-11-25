@@ -9,11 +9,16 @@ defmodule TigerLillyWeb.Api.V1.NuggetController do
       {:ok, nugget} ->
         conn
         |> put_status(:created)
-        |> render("show.json", nugget: nugget)
+        |> render("show.json", nugget: nugget, conn: conn)
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
     end
+  end
+
+  def show(conn, %{"id" => id}) do
+    nugget = TodayILearned.get_nugget!(id)
+    render(conn, "show.json", nugget: nugget, conn: conn)
   end
 
   def update(conn, %{"id" => id} = nugget_params) do
@@ -22,7 +27,7 @@ defmodule TigerLillyWeb.Api.V1.NuggetController do
       {:ok, nugget} ->
         conn
         |> put_status(:accepted)
-        |> render("show.json", nugget: nugget)
+        |> render(conn, "show.json", nugget: nugget)
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
