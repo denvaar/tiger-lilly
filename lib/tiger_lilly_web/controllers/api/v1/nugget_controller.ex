@@ -2,7 +2,6 @@ defmodule TigerLillyWeb.Api.V1.NuggetController do
   use TigerLillyWeb, :controller
 
   alias TigerLilly.TodayILearned
-  alias TigerLilly.TodayILearned.Nugget
 
   def create(conn, nugget_params) do
     case TodayILearned.create_nugget(nugget_params) do
@@ -10,7 +9,7 @@ defmodule TigerLillyWeb.Api.V1.NuggetController do
         conn
         |> put_status(:created)
         |> render("show.json", nugget: nugget, conn: conn)
-      {:error, changeset} ->
+      {:error, _changeset} ->
         conn
         |> put_status(:unprocessable_entity)
     end
@@ -28,7 +27,7 @@ defmodule TigerLillyWeb.Api.V1.NuggetController do
         conn
         |> put_status(:accepted)
         |> render(conn, "show.json", nugget: nugget)
-      {:error, changeset} ->
+      {:error, _changeset} ->
         conn
         |> put_status(:unprocessable_entity)
     end

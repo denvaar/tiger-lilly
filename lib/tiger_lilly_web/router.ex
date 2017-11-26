@@ -5,6 +5,10 @@ defmodule TigerLillyWeb.Router do
     plug TigerLilly.Guardian.EnsureAuthenticated
   end
 
+  pipeline :api_auth do
+    plug TigerLilly.Guardian.ApiAuthPipeline
+  end
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -22,7 +26,13 @@ defmodule TigerLillyWeb.Router do
     pipe_through :api
 
     scope "/v1", Api.V1, as: :v1 do
+      pipe_through :api_auth
+
       resources "/tils", NuggetController, only: [:show, :create, :update]
+    end
+
+    scope "/v1", Api.V1, as: :v1 do
+      resources "/auth", AuthController, only: [:create]
     end
   end
 
