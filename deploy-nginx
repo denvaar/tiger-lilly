@@ -1,4 +1,4 @@
-. ~/environment-variables
+. ~/tiger_lilly_env
 
 mix deps.get --only prod
 

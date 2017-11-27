@@ -26,8 +26,10 @@
             <%= link to: post_path(@conn, :index), class: "nav-link" do %>
               <li>Articles</li>
             <% end %>
-            <%= link to: nugget_path(@conn, :index), class: "nav-link" do %>
-              <li>Today I Learned</li>
+            <%= if Mix.env == :dev do %>
+              <%= link to: nugget_path(@conn, :index), class: "nav-link" do %>
+                <li>Today I Learned</li>
+              <% end %>
             <% end %>
             <%= if @current_user do %>
               <%= link to: post_path(@conn, :new), class: "nav-link" do %>
