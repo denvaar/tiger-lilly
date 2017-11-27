@@ -27,6 +27,13 @@
   }
 }
 
+.breadcrumbs {
+  .nav-link {
+    color: $blue;
+    text-decoration: none;
+  }
+}
+
 @media all and (min-width: $mobile-device-upper-limit) {
   .navbar {
     display: inline-block;

@@ -1,3 +1,6 @@
+<div class="ml-1 breadcrumbs">
+  <%= link "Back", to: post_path(@conn, :index), class: "nav-link" %>
+</div>
 <article class="fg-gray-1 post-detail">
   <div>
     <header class="mr-1 mb-2 post-detail-header">
