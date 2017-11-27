@@ -2,8 +2,10 @@
 
 mix deps.get --only prod
 
-yarn install
+cd assets
+yarn
 yarn run deploy
+cd ..
 MIX_ENV=prod mix phx.digest
 
 MIX_ENV=prod mix ecto.create
