@@ -21,4 +21,5 @@ erl_crash.dump
 /config/*.secret.exs
 /assets/node_modules
 /assets/yarn.lock
+/assets/cypress/screenshots/
 /priv/static/*
