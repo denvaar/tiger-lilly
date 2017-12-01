@@ -15,7 +15,11 @@
         <div class="grid-item-3">
           <h2 class="mobile-h2">
             <a href="<%= post_path(@conn, :show, post) %>" class="link">
-              <%= post.title %>
+              <%= if !post.published do %>
+                [DRAFT] <%= post.title %>
+              <% else %>
+                <%= post.title %>
+              <% end %>
             </a>
           </h2>
         </div>
