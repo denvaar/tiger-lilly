@@ -28,6 +28,12 @@ defmodule TigerLilly.Blog do
     from(post in Post)
   end
 
+  def only_published_if(query, nil) do
+    query
+    |> where([q], q.published)
+  end
+  def only_published_if(query, _), do: query
+
   def filter_by(query, nil), do: query
   def filter_by(query, ""), do: query
   def filter_by(query, search_term) do

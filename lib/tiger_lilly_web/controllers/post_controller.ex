@@ -13,6 +13,7 @@ defmodule TigerLillyWeb.PostController do
     page =
       Blog.list_posts_as_query()
       |> Blog.filter_by(params["q"])
+      |> Blog.only_published_if(TigerLilly.Guardian.Plug.current_resource(conn))
       |> Blog.order_by_published_date()
       |> Repo.paginate(params)
     render(conn, "index.html", posts: page.entries, page: page)

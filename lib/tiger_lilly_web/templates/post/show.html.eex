@@ -1,6 +1,9 @@
 <div class="ml-1 breadcrumbs">
   <%= link "Back", to: post_path(@conn, :index), class: "nav-link" %>
 </div>
+<%= if !@post.published do %>
+  <p class="alert alert-notify text-center p-1 ml-1 mr-1">This is a draft.</p>
+<% end %>
 <article class="fg-gray-1 post-detail">
   <div>
     <header class="mr-1 mb-2 post-detail-header">
